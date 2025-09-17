@@ -1,0 +1,39 @@
+{% schema %}
+{
+  "name": "Lookbook Grid",
+  "tag": "section",
+  "class": "section color-scheme-3",
+  "settings": [
+    { "type": "text", "id": "title", "label": "Titre", "default": "Style en mouvement" },
+    { "type": "url", "id": "cta_link", "label": "Lien du bouton" }, // <-- pas de default ici
+    { "type": "text", "id": "cta_label", "label": "Texte du bouton", "default": "Découvrir la collection" }
+  ],
+  "blocks": [
+    { "type": "image", "name": "Image", "settings": [{ "type": "image_picker", "id": "image", "label": "Image" }] }
+  ],
+  "max_blocks": 6,
+  "presets": [{ "name": "Lookbook Grid (K-SNK)" }]
+}
+{% endschema %}
+
+<section class="page-width">
+  <div class="ks-lookbook__head">
+    <h2 class="title h2">{{ section.settings.title }}</h2>
+    {% if section.settings.cta_link != blank %}
+      <a class="button button--secondary" href="{{ section.settings.cta_link }}">{{ section.settings.cta_label }}</a>
+    {% endif %}
+  </div>
+  <div class="ks-lookbook">
+    {% for block in section.blocks %}
+      {% if block.settings.image %}
+        <figure class="ks-lookbook__item" {{ block.shopify_attributes }}>
+          {{
+            block.settings.image
+            | image_url: width: 1600
+            | image_tag: loading: 'lazy', class: 'ks-lookbook__img', alt: 'look'
+          }}
+        </figure>
+      {% endif %}
+    {% endfor %}
+  </div>
+</section>

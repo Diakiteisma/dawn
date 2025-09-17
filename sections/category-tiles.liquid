@@ -1,0 +1,51 @@
+{% schema %}
+{
+  "name": "Tuiles Catégories",
+  "tag": "section",
+  "class": "section color-scheme-2",
+  "settings": [{ "type": "text", "id": "title", "label": "Titre", "default": "Shop par catégorie" }],
+  "blocks": [
+    {
+      "type": "tile",
+      "name": "Tuile",
+      "settings": [
+        { "type": "text", "id": "heading", "label": "Titre", "default": "Femme" },
+        { "type": "image_picker", "id": "image", "label": "Image" },
+        { "type": "url", "id": "link", "label": "Lien" } // <-- pas de default ici
+      ]
+    }
+  ],
+  "max_blocks": 6,
+  "presets": [{ "name": "Tuiles Catégories (K-SNK)" }]
+}
+{% endschema %}
+
+<section class="page-width">
+  {% if section.settings.title != blank %}
+    <h2 class="title h2">{{ section.settings.title }}</h2>
+  {% endif %}
+  <div class="ks-tiles">
+    {% for block in section.blocks %}
+      {% assign img = block.settings.image %}
+      <a class="ks-tiles__item" href="{{ block.settings.link | default: '#' }}" {{ block.shopify_attributes }}>
+        {% if img %}
+          {{
+            img
+            | image_url: width: 1600
+            | image_tag:
+              loading: 'lazy',
+              sizes: '(min-width: 990px) 33vw, 50vw',
+              class: 'ks-tiles__img',
+              alt: block.settings.heading
+          }}
+        {% else %}
+          <div class="ks-tiles__placeholder"></div>
+        {% endif %}
+        <div class="ks-tiles__overlay"></div>
+        <div class="ks-tiles__label">
+          <span>{{ block.settings.heading }}</span>
+        </div>
+      </a>
+    {% endfor %}
+  </div>
+</section>

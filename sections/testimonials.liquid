@@ -1,0 +1,47 @@
+{% schema %}
+{
+  "name": "Avis clients",
+  "tag": "section",
+  "class": "section color-scheme-1",
+  "settings": [{ "type": "text", "id": "title", "label": "Titre", "default": "Ils ont adopté KABALA&SNEAKERS" }],
+  "blocks": [
+    {
+      "type": "review",
+      "name": "Avis",
+      "settings": [
+        { "type": "range", "id": "stars", "min": 3, "max": 5, "step": 1, "label": "Note (★)", "default": 5 },
+        {
+          "type": "text",
+          "id": "quote",
+          "label": "Citation",
+          "default": "Confort au top, taille nickel, livraison rapide !"
+        },
+        { "type": "text", "id": "author", "label": "Auteur", "default": "Lina M." }
+      ]
+    }
+  ],
+  "max_blocks": 6,
+  "presets": [{ "name": "Avis clients (K-SNK)" }]
+}
+{% endschema %}
+
+<section class="page-width">
+  {% if section.settings.title != blank %}
+    <h2 class="title h2">{{ section.settings.title }}</h2>
+  {% endif %}
+  <div class="ks-reviews">
+    {% for block in section.blocks %}
+      <figure class="ks-reviews__item" {{ block.shopify_attributes }}>
+        <div class="ks-reviews__stars">
+          {% for i in (1..block.settings.stars) -%}
+            ★
+          {%- endfor %}
+          {% for i in (block.settings.stars..4) -%}
+          {%- endfor %}
+        </div>
+        <blockquote class="ks-reviews__quote">“{{ block.settings.quote }}”</blockquote>
+        <figcaption class="ks-reviews__author">— {{ block.settings.author }}</figcaption>
+      </figure>
+    {% endfor %}
+  </div>
+</section>
