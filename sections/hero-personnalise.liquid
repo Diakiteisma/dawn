@@ -1,0 +1,80 @@
+{% schema %}
+{
+  "name": "Hero personnalisé",
+  "settings": [
+    { "type": "text", "id": "eyebrow", "label": "Sur-titre", "default": "Nouvelle collection" },
+    { "type": "text", "id": "title", "label": "Titre", "default": "Faites-vous plaisir" },
+    { "type": "text", "id": "subtitle", "label": "Sous-titre", "default": "Pièces essentielles, conçues pour durer." },
+    { "type": "image_picker", "id": "image", "label": "Image" },
+    { "type": "url", "id": "cta_url", "label": "Lien du bouton" },
+    { "type": "text", "id": "cta_label", "label": "Texte du bouton", "default": "Découvrir" },
+    {
+      "type": "select",
+      "id": "color_scheme",
+      "label": "Schéma de couleurs",
+      "options": [
+        { "value": "background-1", "label": "Fond 1" },
+        { "value": "background-2", "label": "Fond 2" }
+      ],
+      "default": "background-1"
+    }
+  ],
+  "presets": [{ "name": "Hero personnalisé" }],
+  "templates": ["index"]
+}
+{% endschema %}
+
+<section class="section hero-personnalise color-{{ section.settings.color_scheme }}">
+  <div class="page-width grid grid--1-col grid--2-col-tablet">
+    <div class="hero__text">
+      {% if section.settings.eyebrow != blank %}
+        <p class="eyebrow">{{ section.settings.eyebrow }}</p>
+      {% endif %}
+      <h1>{{ section.settings.title }}</h1>
+      {% if section.settings.subtitle != blank %}
+        <p class="subtitle">{{ section.settings.subtitle }}</p>
+      {% endif %}
+      {% if section.settings.cta_url and section.settings.cta_label %}
+        <a class="button" href="{{ section.settings.cta_url }}">{{ section.settings.cta_label }}</a>
+      {% endif %}
+    </div>
+    <div class="hero__media">
+      {% if section.settings.image %}
+        {{ section.settings.image | image_url: width: 1600 | image_tag: loading: 'lazy', class: 'hero__img' }}
+      {% endif %}
+    </div>
+  </div>
+</section>
+
+{% stylesheet %}
+  .hero-personnalise .eyebrow {
+    text-transform: uppercase;
+    letter-spacing: 0.12em;
+    opacity: 0.7;
+    margin: 0 0 0.6rem;
+  }
+  .hero-personnalise h1 {
+    margin: 0 0 1rem;
+    line-height: 1.1;
+  }
+  .hero-personnalise .subtitle {
+    margin: 0 0 1.6rem;
+    font-size: 1.7rem;
+    opacity: 0.85;
+  }
+  .hero-personnalise .hero__img {
+    width: 100%;
+    height: auto;
+    border-radius: 1.2rem;
+  }
+  .grid--2-col-tablet {
+    display: grid;
+    gap: 2rem;
+  }
+  @media (min-width: 750px) {
+    .grid--2-col-tablet {
+      grid-template-columns: 1.1fr 0.9fr;
+      align-items: center;
+    }
+  }
+{% endstylesheet %}

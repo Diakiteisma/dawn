@@ -1453,3 +1453,14 @@
     ]
   }
 ]
+[
+  {
+    "name": "Marque",
+    "settings": [
+      { "type":"font_picker", "id":"brand_heading_font", "label":"Police des titres" },
+      { "type":"font_picker", "id":"brand_body_font", "label":"Police du corps" },
+      { "type":"range", "id":"radius", "min":0, "max":24, "step":2, "unit":"px","label":"Rayon global","default":12 },
+      { "type":"range", "id":"spacing_scale", "min":90, "max":115, "step":1, "unit":"%","label":"Densité des espaces","default":100 }
+    ]
+  }
+]
