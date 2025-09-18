@@ -187,3 +187,35 @@
     }
   }
 }
+{% schema %}
+{
+  "name": "Tuiles Catégories",
+  "tag": "section",
+  "class": "section color-scheme-2",
+  "settings": [
+    { "type": "text", "id": "title", "label": "Titre", "default": "Shop par catégorie" }
+  ],
+  "blocks": [
+    {
+      "type": "tile",
+      "name": "Tuile",
+      "settings": [
+        { "type": "text", "id": "heading", "label": "Titre", "default": "Femme" },
+        { "type": "image_picker", "id": "image", "label": "Image" },
+        { "type": "url", "id": "link", "label": "Lien" }
+      ]
+    }
+  ],
+  "max_blocks": 6,
+  "presets": [
+    {
+      "name": "Tuiles Catégories (K-SNK)",
+      "blocks": [
+        { "type": "tile", "settings": { "heading": "Homme",  "link": "/collections/homme"  } },
+        { "type": "tile", "settings": { "heading": "Femme",  "link": "/collections/femme"  } },
+        { "type": "tile", "settings": { "heading": "Enfant", "link": "/collections/enfant" } }
+      ]
+    }
+  ]
+}
+{% endschema %}
