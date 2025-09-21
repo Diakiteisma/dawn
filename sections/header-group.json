@@ -53,18 +53,10 @@
         "padding_top": 20,
         "padding_bottom": 20
       }
-    },
-    "category_tiles_engPwe": {
-      "type": "category-tiles",
-      "name": "Tuiles Catégories (K-SNK)",
-      "settings": {
-        "title": "Shop par catégorie"
-      }
     }
   },
   "order": [
     "announcement-bar",
-    "header",
-    "category_tiles_engPwe"
+    "header"
   ]
 }
