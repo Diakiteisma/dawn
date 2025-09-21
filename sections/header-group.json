@@ -20,18 +20,10 @@
             "text": "Zéro compromis : style × confort.Choisissez votre pointure, on s’occupe du reste",
             "link": ""
           }
-        },
-        "announcement_hhnzPT": {
-          "type": "announcement",
-          "settings": {
-            "text": "Livraison offerte dès 80€ • Retours 30 jours • Paiement sécurisé",
-            "link": ""
-          }
         }
       },
       "block_order": [
-        "announcement-bar-0",
-        "announcement_hhnzPT"
+        "announcement-bar-0"
       ],
       "settings": {
         "auto_rotate": false,
@@ -61,10 +53,36 @@
         "padding_top": 20,
         "padding_bottom": 20
       }
+    },
+    "announcement_bar_xaFakP": {
+      "type": "announcement-bar",
+      "blocks": {
+        "announcement_9B4MmH": {
+          "type": "announcement",
+          "settings": {
+            "text": "Bienvenue dans notre boutique",
+            "link": ""
+          }
+        }
+      },
+      "block_order": [
+        "announcement_9B4MmH"
+      ],
+      "name": "t:sections.announcement-bar.presets.name",
+      "settings": {
+        "auto_rotate": false,
+        "change_slides_speed": 5,
+        "color_scheme": "",
+        "show_line_separator": true,
+        "show_social": false,
+        "enable_country_selector": false,
+        "enable_language_selector": false
+      }
     }
   },
   "order": [
     "announcement-bar",
-    "header"
+    "header",
+    "announcement_bar_xaFakP"
   ]
 }
