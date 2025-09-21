@@ -17,13 +17,21 @@
         "announcement-bar-0": {
           "type": "announcement",
           "settings": {
-            "text": "Welcome to our store",
+            "text": "Zéro compromis : style × confort.Choisissez votre pointure, on s’occupe du reste",
+            "link": ""
+          }
+        },
+        "announcement_hhnzPT": {
+          "type": "announcement",
+          "settings": {
+            "text": "Bienvenue dans notre boutique",
             "link": ""
           }
         }
       },
       "block_order": [
-        "announcement-bar-0"
+        "announcement-bar-0",
+        "announcement_hhnzPT"
       ],
       "settings": {
         "auto_rotate": false,
