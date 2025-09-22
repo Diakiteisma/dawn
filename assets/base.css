@@ -3658,3 +3658,29 @@ details-disclosure > details {
 }
 #toTop:hover{ transform:translateY(-1px); }
 h1,h2,.h0,.h1,.h2 { letter-spacing: .2px; font-weight: 800; }
+
+/* === Custom: catégories header (Homme / Femme / Enfant) === */
+.header__categories { margin-left: 1rem; }
+
+.header__categories .list-menu--inline {
+  display: inline-flex;
+  gap: 1.2rem;           /* espace entre les items */
+  align-items: center;
+}
+
+.header__categories .list-menu__item--link {
+  padding: .5rem .75rem; /* vertical, horizontal */
+  font-weight: 600;
+}
+
+/* Fallback si jamais 'gap' n'est pas pris en compte */
+.header__categories .list-menu__item + .list-menu__item {
+  margin-left: 1.2rem;
+}
+
+/* (Optionnel) styles si tu affiches aussi ce bloc en mobile
+   -> ne sert à rien si ton <nav> a la classe 'small-hide' */
+@media (max-width: 749px) {
+  .header__categories { margin-left: .5rem; }
+  .header__categories .list-menu--inline { gap: .75rem; }
+}
