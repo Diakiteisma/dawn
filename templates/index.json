@@ -15,24 +15,24 @@
         "heading": {
           "type": "heading",
           "settings": {
-            "heading": "Image banner",
+            "heading": "<em><strong>Rendez chaque pas iconique</strong></em>",
             "heading_size": "h0"
           }
         },
         "text": {
           "type": "text",
           "settings": {
-            "text": "Give customers details about the banner image(s) or content on the template.",
+            "text": "",
             "text_style": "body"
           }
         },
         "button": {
           "type": "buttons",
           "settings": {
-            "button_label_1": "Shop all",
+            "button_label_1": "Découvrez la collection",
             "button_link_1": "shopify://collections/all",
             "button_style_secondary_1": true,
-            "button_label_2": "",
+            "button_label_2": "trouver votre pointure",
             "button_link_2": "",
             "button_style_secondary_2": false
           }
@@ -44,7 +44,7 @@
         "button"
       ],
       "settings": {
-        "image": "shopify://shop_images/Design.jpg",
+        "image": "shopify://shop_images/telechargement_1.jpg",
         "image_2": "{{ shop.brand.cover_image }}",
         "image_overlay_opacity": 40,
         "image_height": "large",
@@ -63,7 +63,7 @@
       "settings": {
         "collection": "all",
         "products_to_show": 8,
-        "title": "Featured products",
+        "title": "Produits phares",
         "heading_size": "h2",
         "description": "",
         "show_description": false,
@@ -126,6 +126,7 @@
         "heading_size": "h1",
         "enable_video_looping": false,
         "video_url": "https://www.youtube.com/watch?v=XEz6SeOfJog",
+        "cover_image": "shopify://shop_images/adidas.jpg",
         "description": "",
         "full_width": false,
         "color_scheme": "scheme-1",
