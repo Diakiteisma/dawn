@@ -182,3 +182,29 @@
 }
 {% endschema %}
 <a href="/account/delete" class="btn btn--secondary"> Supprimer mon compte </a>
+
+<style>
+  .delete-account-btn {
+    display: inline-block;
+    background-color: #d9534f; /* rouge */
+    color: white;
+    padding: 12px 20px;
+    border-radius: 8px;
+    text-decoration: none;
+    font-weight: bold;
+    transition: background 0.3s ease;
+  }
+  .delete-account-btn:hover {
+    background-color: #c9302c; /* rouge foncé au survol */
+  }
+  .delete-warning {
+    margin-top: 10px;
+    color: #a94442;
+    font-size: 14px;
+  }
+</style>
+
+<a href="/account/delete" class="delete-account-btn"> ❌ Supprimer mon compte </a>
+<p class="delete-warning">
+  Attention : cette action est définitive. Toutes vos données personnelles seront supprimées.
+</p>
