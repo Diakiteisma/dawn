@@ -1,0 +1,8 @@
+{% render 'role-gate', roles: 'admin', redirect_url: '/account/login' %}{% endrender %}
+<h1>Zone Admin</h1>
+<p>Contenu réservé.</p>
+{% render 'role-gate', roles: 'admin', redirect_url: '/account/login' %}{% endrender %}
+{% section 'main-page' %}
+{% render 'role-gate', roles: 'vip,wholesale', redirect_url: '/' %}
+  <!-- grille produits réservée -->
+{% endrender %}

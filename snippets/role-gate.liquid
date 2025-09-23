@@ -1,0 +1,58 @@
+{%- comment -%}
+  role-gate.liquid
+  Usage (ALLOW) :
+    {% render 'role-gate', roles: 'admin,manager', redirect_url: '/account/login' %}
+      ...contenu réservé aux admin/manager...
+    {% endrender %}
+
+  Usage (DENY) :
+    {% render 'role-gate', roles: 'banned', mode: 'deny', redirect_url: '/' %}
+      ...contenu visible pour tous sauf les "banned"...
+    {% endrender %}
+
+  Notes :
+  - Les "rôles" sont des tags client. Ajoute un tag "admin" sur la fiche client (Admin → Clients).
+  - Si aucun client connecté : accès refusé (sauf mode: 'deny').
+{%- endcomment -%}
+
+{%- assign param_roles = roles | default: '' | downcase | split: ',' | map: 'strip' -%}
+{%- assign mode = mode | default: 'allow' | downcase -%}
+{%- assign has_role = false -%}
+
+{%- if customer and customer.tags -%}
+  {%- assign customer_tags = customer.tags | join: ',' | downcase | split: ',' | map: 'strip' -%}
+  {%- for r in param_roles -%}
+    {%- if customer_tags contains r and r != '' -%}
+      {%- assign has_role = true -%}
+      {% break %}
+    {%- endif -%}
+  {%- endfor -%}
+{%- endif -%}
+
+{%- assign show_block = false -%}
+{%- if mode == 'allow' -%}
+  {%- assign show_block = has_role -%}
+{%- elsif mode == 'deny' -%}
+  {%- assign show_block = customer -%}
+  {%- if has_role -%}{%- assign show_block = false -%}{%- endif -%}
+{%- endif -%}
+
+{%- if show_block -%}
+  {{ content_for_render }}
+{%- else -%}
+  {%- if redirect_url and redirect_url != blank -%}
+    <script>
+      window.location.href = {{ redirect_url | json }};
+    </script>
+  {%- else -%}
+    <div class="role-gate-denied" style="padding:16px;border:1px solid #eee;border-radius:10px;background:#fff7f7;">
+      <strong>Accès restreint</strong><br>
+      {% if customer %}
+        Vous n’avez pas les autorisations nécessaires.
+      {% else %}
+        Vous devez être connecté pour accéder à ce contenu.
+        <a href="/account/login" style="text-decoration:underline;">Se connecter</a>
+      {% endif %}
+    </div>
+  {%- endif -%}
+{%- endif -%}

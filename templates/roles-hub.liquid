@@ -1,0 +1,63 @@
+{% comment %}
+  Template: page.roles-hub.liquid
+  Assigne-le à une Page depuis Admin → Contenu → Pages → (ta page) → Modèle = page.roles-hub
+{% endcomment %}
+
+<section class="roles-hub" style="max-width:960px;margin:40px auto;padding:0 20px;">
+  <div style="text-align:center;margin-bottom:24px;">
+    <h1 style="margin:0 0 8px;font-size:32px;">Espace de votre compte</h1>
+    <p style="margin:0;color:#666;">Contenu adapté selon votre statut : administrateur, client ou visiteur.</p>
+  </div>
+
+  {% if customer and customer.tags contains 'admin' %}
+    <!-- Bloc ADMIN -->
+    <div style="display:grid;gap:16px;grid-template-columns:1fr 1fr;">
+      <div style="padding:20px;border:1px solid #eee;border-radius:14px;">
+        <h2 style="margin-top:0;">Tableau de bord Admin</h2>
+        <ul style="margin:0;padding-left:18px;line-height:1.8;">
+          <li><a href="/admin" target="_blank">Accéder à l’Admin Shopify</a></li>
+          <li><a href="/pages/zone-admin">Zone admin (front)</a></li>
+          <li><a href="/account">Comptes clients</a></li>
+        </ul>
+      </div>
+      <div style="padding:20px;border:1px solid #eee;border-radius:14px;">
+        <h3 style="margin-top:0;">Outils rapides</h3>
+        <div style="display:flex;gap:10px;flex-wrap:wrap;">
+          <a href="/collections/all" class="btn" style="padding:10px 14px;border:1px solid #ddd;border-radius:10px;display:inline-block;">Produits</a>
+          <a href="/account/orders" class="btn" style="padding:10px 14px;border:1px solid #ddd;border-radius:10px;display:inline-block;">Commandes</a>
+          <a href="/account/delete" class="btn" style="padding:10px 14px;border:1px solid #ddd;border-radius:10px;display:inline-block;color:#c9302c;">Supprimer mon compte (test)</a>
+        </div>
+      </div>
+    </div>
+
+  {% elsif customer %}
+    <!-- Bloc CLIENT (connecté, non admin) -->
+    <div style="display:grid;gap:16px;grid-template-columns:1fr 1fr;">
+      <div style="padding:20px;border:1px solid #eee;border-radius:14px;">
+        <h2 style="margin-top:0;">Bonjour {{ customer.first_name | default: customer.email }}</h2>
+        <p>Bienvenue dans votre espace client. Retrouvez vos informations et commandes.</p>
+        <ul style="margin:0;padding-left:18px;line-height:1.8;">
+          <li><a href="/account">Mon compte</a></li>
+          <li><a href="/account/addresses">Mes adresses</a></li>
+          <li><a href="/account/orders">Mes commandes</a></li>
+        </ul>
+      </div>
+      <div style="padding:20px;border:1px solid #eee;border-radius:14px;">
+        <h3 style="margin-top:0;">Avantages</h3>
+        <p style="margin-top:0;">Profitez d’offres réservées aux membres connectés.</p>
+        <a href="/collections/all" class="btn" style="padding:10px 14px;border:1px solid #ddd;border-radius:10px;display:inline-block;">Parcourir la boutique</a>
+      </div>
+    </div>
+
+  {% else %}
+    <!-- Bloc VISITEUR (non connecté) -->
+    <div style="padding:20px;border:1px solid #eee;border-radius:14px;">
+      <h2 style="margin-top:0;">Bienvenue 👋</h2>
+      <p>Connectez-vous ou créez un compte pour accéder à plus de fonctionnalités.</p>
+      <div style="display:flex;gap:10px;flex-wrap:wrap;">
+        <a href="/account/login" class="btn" style="padding:10px 14px;border:1px solid #ddd;border-radius:10px;display:inline-block;">Se connecter</a>
+        <a href="/account/register" class="btn" style="padding:10px 14px;border:1px solid #ddd;border-radius:10px;display:inline-block;">Créer un compte</a>
+      </div>
+    </div>
+  {% endif %}
+</section>
