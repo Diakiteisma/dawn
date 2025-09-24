@@ -10,7 +10,7 @@
 {
   "current": {
     "logo": "shopify://shop_images/cr-e-un-logo-combination-mark-pour-une-boutique-e-commerce-de-sneakers-nomm-e-kabala-sneakers-le-logo-doit-tre-ludique-tr-s-d-taill-avec-une-sneaker-stylis-e-et-dynamique-dans-un-styl.png",
-    "logo_width": 90,
+    "logo_width": 160,
     "favicon": "shopify://shop_images/favicon-2-monogramme-k-s-lettres-entrem-l-es-dans-un-cercle-couleur-de-fond-rouge-typo-street-bebas-ou-graffiti-l-ger.png",
     "type_header_font": "assistant_n4",
     "heading_scale": 100,
@@ -385,35 +385,3 @@
     "custom_css": []
   }
 }
-{% schema %}
-{
-  "name": "Tuiles Catégories",
-  "tag": "section",
-  "class": "section color-scheme-2",
-  "settings": [
-    { "type": "text", "id": "title", "label": "Titre", "default": "Shop par catégorie" }
-  ],
-  "blocks": [
-    {
-      "type": "tile",
-      "name": "Tuile",
-      "settings": [
-        { "type": "text", "id": "heading", "label": "Titre", "default": "Femme" },
-        { "type": "image_picker", "id": "image", "label": "Image" },
-        { "type": "url", "id": "link", "label": "Lien" }
-      ]
-    }
-  ],
-  "max_blocks": 6,
-  "presets": [
-    {
-      "name": "Tuiles Catégories (K-SNK)",
-      "blocks": [
-        { "type": "tile", "settings": { "heading": "Homme",  "link": "/collections/homme"  } },
-        { "type": "tile", "settings": { "heading": "Femme",  "link": "/collections/femme"  } },
-        { "type": "tile", "settings": { "heading": "Enfant", "link": "/collections/enfant" } }
-      ]
-    }
-  ]
-}
-{% endschema %}
