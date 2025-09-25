@@ -1,0 +1,33 @@
+/* KABALA&SNEAKER — Palette et styles globaux */
+:root{
+  --ks-bg: #f6f8fc;
+  --ks-text: #121418;
+  --ks-muted: #9ea1a2;
+  --ks-muted-2: #5e6062;
+  --ks-primary: #aa292a;
+  --ks-primary-dark: #591f1c;
+}
+
+body{ color: var(--ks-text); background: var(--ks-bg); }
+
+a, .link, .breadcrumb a{ color: var(--ks-primary); }
+a:hover, .link:hover{ color: var(--ks-primary-dark); }
+
+.button, .button--primary, button[type="submit"],
+.shopify-payment-button__button, .shopify-challenge__button{
+  background: var(--ks-primary) !important;
+  border-color: var(--ks-primary) !important;
+  color: #fff !important;
+}
+.button:hover, .button--primary:hover, button[type="submit"]:hover,
+.shopify-payment-button__button:hover{
+  background: var(--ks-primary-dark) !important;
+  border-color: var(--ks-primary-dark) !important;
+}
+
+.badge, .tag{ background: var(--ks-muted); color:#fff; }
+
+.header, .site-header{ border-bottom: 1px solid var(--ks-muted-2); }
+.announcement-bar{ background: var(--ks-primary); color:#fff; }
+
+h1, h2, h3{ color: var(--ks-text); }
