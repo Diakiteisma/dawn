@@ -484,6 +484,15 @@
     }
   </script>
 {%- endif -%}
+{% if settings.ks_show_admin_link and customer and customer.tags contains 'admin' %}
+  <div class="header-admin-link" style="margin-left:12px;">
+    <a href="/pages/{{ settings.ks_admin_page_handle | default: 'espace-admin' }}" style="text-decoration:none;"
+      >🛠 Zone admin</a
+    >
+  </div>
+{% endif %}
+
+{% if settings.ks_enable_dark_toggle %}{% render 'theme-mode-toggle' %}{% endif %}
 
 {% if customer and customer.tags contains 'admin' %}
   <li><a href="/pages/zone-admin">Zone admin</a></li>

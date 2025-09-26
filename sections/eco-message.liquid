@@ -1,0 +1,50 @@
+{% comment %} KABALA&SNEAKER — Section Message Écologique {% endcomment %}
+<section class="ks-eco" style="max-width:1000px;margin:24px auto;padding:0 20px;">
+  <div style="display:flex;gap:14px;align-items:flex-start;">
+    <div style="font-size:24px;line-height:1.1;">🌿</div>
+    <div>
+      <h2 style="margin:0 0 6px;">{{ section.settings.title | default: 'Notre engagement pour la planète' }}</h2>
+      <div style="color:var(--ks-text);opacity:.9;">{{ section.settings.text }}</div>
+      <div class="points">
+        {% if section.settings.point1 != blank -%}
+          <span class="point">♻️ {{ section.settings.point1 }}</span>
+        {%- endif %}
+        {% if section.settings.point2 != blank -%}
+          <span class="point">📦 {{ section.settings.point2 }}</span>
+        {%- endif %}
+        {% if section.settings.point3 != blank -%}
+          <span class="point">🚚 {{ section.settings.point3 }}</span>
+        {%- endif %}
+      </div>
+    </div>
+  </div>
+</section>
+
+{% schema %}
+{
+  "name": "Message écologique",
+  "settings": [
+    { "type": "text", "id": "title", "label": "Titre", "default": "Notre engagement pour la planète" },
+    {
+      "type": "richtext",
+      "id": "text",
+      "label": "Texte",
+      "default": "<p>Nous privilégions des choix responsables et des partenaires engagés pour réduire notre impact.</p>"
+    },
+    { "type": "text", "id": "point1", "label": "Point 1", "default": "Emballages majoritairement recyclables" },
+    {
+      "type": "text",
+      "id": "point2",
+      "label": "Point 2",
+      "default": "Optimisation des envois pour limiter les trajets"
+    },
+    {
+      "type": "text",
+      "id": "point3",
+      "label": "Point 3",
+      "default": "Choix de transporteurs proposant des options de compensation"
+    }
+  ],
+  "presets": [{ "name": "Message écologique" }]
+}
+{% endschema %}

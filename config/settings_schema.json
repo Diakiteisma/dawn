@@ -1464,3 +1464,14 @@
     ]
   }
 ]
+{
+  "name": "KABALA & SNEAKER",
+  "settings": [
+    { "type": "checkbox", "id": "ks_show_admin_link", "label": "Afficher le lien 'Zone admin' (clients tagués 'admin')", "default": true },
+    { "type": "checkbox", "id": "ks_enable_dark_toggle", "label": "Afficher le commutateur Clair/Sombre", "default": true },
+    { "type": "checkbox", "id": "ks_show_delete_button", "label": "Afficher le bouton 'Supprimer mon compte' (page compte)", "default": true },
+    { "type": "checkbox", "id": "ks_show_footer_date", "label": "Afficher la date 'Dernière mise à jour' dans le footer", "default": true },
+    { "type": "text", "id": "ks_admin_page_handle", "label": "Handle de la page Admin", "default": "espace-admin" },
+    { "type": "text", "id": "ks_client_page_handle", "label": "Handle de la page Client", "default": "espace-client" }
+  ]
+}

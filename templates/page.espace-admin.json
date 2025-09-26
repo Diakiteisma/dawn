@@ -1,0 +1,8 @@
+{
+  "name": "Page - Espace Admin",
+  "sections": {
+    "eco": { "type": "eco-message", "settings": {} },
+    "main": { "type": "espace-admin", "settings": {} }
+  },
+  "order": ["eco", "main"]
+}

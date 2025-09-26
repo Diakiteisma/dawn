@@ -1,0 +1,91 @@
+{% comment %} KABALA&SNEAKER — Section Espace Client {% endcomment %}
+<section class="ks-space ks-space-client" style="max-width:1000px;margin:40px auto;padding:0 20px;">
+  {% if customer %}
+    <header style="margin-bottom:24px;">
+      <h1 style="margin:0 0 6px;">{{ section.settings.title | default: 'Espace Client' }}</h1>
+      <p style="margin:0;color:var(--ks-muted);">
+        {{ section.settings.subtitle | default: 'Retrouvez vos informations et vos commandes.' }}
+      </p>
+    </header>
+    <div style="display:grid;gap:16px;grid-template-columns:repeat(auto-fit,minmax(260px,1fr));">
+      {% for block in section.blocks %}
+        {% case block.type %}
+          {% when 'quick_link' %}
+            <a
+              href="{{ block.settings.url }}"
+              class="ks-card"
+              style="display:block;padding:16px;border:1px solid var(--ks-muted-2);border-radius:14px;text-decoration:none;"
+            >
+              <h3 style="margin:0 0 6px;">{{ block.settings.label }}</h3>
+              <p style="margin:0;color:var(--ks-muted);">{{ block.settings.desc }}</p>
+            </a>
+          {% when 'note' %}
+            <div class="ks-card" style="padding:16px;border:1px solid var(--ks-muted-2);border-radius:14px;">
+              <strong style="display:block;margin-bottom:6px;">{{ block.settings.heading }}</strong>
+              <div>{{ block.settings.text }}</div>
+            </div>
+        {% endcase %}
+      {% endfor %}
+    </div>
+  {% else %}
+    <div style="padding:20px;border:1px solid var(--ks-muted-2);border-radius:14px;">
+      <h2 style="margin-top:0;">Bienvenue 👋</h2>
+      <p>Connectez-vous ou créez un compte pour accéder à vos informations.</p>
+      <div style="display:flex;gap:10px;flex-wrap:wrap;">
+        <a
+          href="/account/login"
+          class="btn"
+          style="padding:10px 14px;border:1px solid var(--ks-muted-2);border-radius:10px;display:inline-block;"
+          >Se connecter</a
+        >
+        <a
+          href="/account/register"
+          class="btn"
+          style="padding:10px 14px;border:1px solid var(--ks-muted-2);border-radius:10px;display:inline-block;"
+          >Créer un compte</a
+        >
+      </div>
+    </div>
+  {% endif %}
+</section>
+
+{% schema %}
+{
+  "name": "Espace Client",
+  "settings": [
+    { "type": "text", "id": "title", "label": "Titre", "default": "Espace Client" },
+    {
+      "type": "text",
+      "id": "subtitle",
+      "label": "Sous-titre",
+      "default": "Retrouvez vos informations et vos commandes."
+    }
+  ],
+  "blocks": [
+    {
+      "type": "quick_link",
+      "name": "Lien rapide",
+      "settings": [
+        { "type": "text", "id": "label", "label": "Libellé", "default": "Mes commandes" },
+        { "type": "url", "id": "url", "label": "URL", "default": "/account/orders" },
+        { "type": "text", "id": "desc", "label": "Description", "default": "Voir l’historique" }
+      ]
+    },
+    {
+      "type": "note",
+      "name": "Bloc texte",
+      "settings": [
+        { "type": "text", "id": "heading", "label": "Titre", "default": "Aide" },
+        {
+          "type": "richtext",
+          "id": "text",
+          "label": "Texte",
+          "default": "<p>Service client : contactez-nous si besoin.</p>"
+        }
+      ]
+    }
+  ],
+  "max_blocks": 12,
+  "presets": [{ "name": "Espace Client" }]
+}
+{% endschema %}

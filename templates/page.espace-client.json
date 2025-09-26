@@ -1,0 +1,8 @@
+{
+  "name": "Page - Espace Client",
+  "sections": {
+    "eco": { "type": "eco-message", "settings": {} },
+    "main": { "type": "espace-client", "settings": {} }
+  },
+  "order": ["eco", "main"]
+}
